@@ -16,10 +16,10 @@ require 'aws-sdk-ec2'
 #   otherwise, false.
 # @example
 #   exit 1 unless vpc_created_and_tagged?(
-#     Aws::EC2::Resource.new(region: 'us-east-1'),
+#     Aws::EC2::Resource.new(region: 'eu-west-2'),
 #     '10.0.0.0/24',
-#     'my-key',
-#     'my-value'
+#     'role',
+#     'morgan_1'
 #   )
 def vpc_created_and_tagged?(
   ec2_resource,
@@ -54,14 +54,14 @@ def run_me
     puts 'Usage:   ruby ec2-ruby-example-create-vpc.rb ' \
       'CIDR_BLOCK TAG_KEY TAG_VALUE REGION'
     puts 'Example: ruby ec2-ruby-example-create-vpc.rb ' \
-      '10.0.0.0/24 my-key my-value us-east-1'
+      '10.0.0.0/24 role morgan_1 eu-west-2'
     exit 1
   # If no values are specified at the command prompt, use these default values.
   elsif ARGV.count.zero?
     cidr_block = '10.0.0.0/24'
-    tag_key = 'my-key'
-    tag_value = 'my-value'
-    region = 'us-east-1'
+    tag_key = 'role'
+    tag_value = 'morgan_1'
+    region = 'eu-west-2'
   # Otherwise, use the values as specified at the command prompt.
   else
     cidr_block = ARGV[0]
